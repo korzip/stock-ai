@@ -114,6 +114,5 @@ python -m app.repair_us_daily --days 30 --limit 50
 
 ## 문서
 - `docs/runbook.md`: 실행/운영 매뉴얼
-- `docs/cloud_run.md`: Cloud Run 배포 가이드
 - `docs/us_data_plan.md`: 미국 데이터 계획
 - `docs/progress.md`: 진행 기록

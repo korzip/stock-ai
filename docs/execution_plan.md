@@ -35,8 +35,8 @@
 
 ## D. 3차 운영/배포
 7) 스테이징 배포
-- Cloud Run (선택 완료)
-- Managed Postgres(Cloud SQL) 구성
+- AWS ECS(Fargate) 기준으로 진행
+- Managed Postgres(RDS) 구성
 - 스테이징/프로덕션 분리(서비스명 접미사)
 
 8) CI/CD

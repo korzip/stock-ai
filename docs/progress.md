@@ -53,18 +53,9 @@
 - `scripts/tunnel_mcp.sh` : ngrok/cloudflared 터널
 - `scripts/set_ai_mode.sh` : rule/llm 모드 전환
 
-## 7) 배포/CI (Cloud Run)
-- Cloud Run 배포 스크립트 추가
-  - `scripts/cloudrun_deploy_backend.sh`
-  - `scripts/cloudrun_deploy_mcp.sh`
-- Dockerfile 추가
-  - `backend/Dockerfile`
-  - `mcp/Dockerfile`
-- GitHub Actions 워크플로우 추가
-  - `/.github/workflows/deploy-backend.yml`
-  - `/.github/workflows/deploy-mcp.yml`
-- 가이드 문서
-  - `docs/cloud_run.md`
+## 7) 배포/CI
+- Cloud Run 구성은 중단
+- AWS ECS 기준으로 재설계 예정
 
 ## 8) KR 데이터 파이프라인
 ### KR 종목 동기화

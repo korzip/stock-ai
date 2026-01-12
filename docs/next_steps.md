@@ -32,7 +32,7 @@
 
 ## 7단계: 배포/운영
 8) 스테이징 배포 설계
-- Cloud Run / ECS Fargate 등 선택
+- AWS ECS(Fargate) 기준으로 설계
 - Managed Postgres/Redis 구성
 
 9) CI/CD
