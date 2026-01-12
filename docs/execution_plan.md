@@ -35,8 +35,9 @@
 
 ## D. 3차 운영/배포
 7) 스테이징 배포
-- Cloud Run/ECS 선택
-- Managed DB/Redis 구성
+- Cloud Run (선택 완료)
+- Managed Postgres(Cloud SQL) 구성
+- 스테이징/프로덕션 분리(서비스명 접미사)
 
 8) CI/CD
 - PR 머지 → 테스트/빌드/배포

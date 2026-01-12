@@ -53,7 +53,20 @@
 - `scripts/tunnel_mcp.sh` : ngrok/cloudflared 터널
 - `scripts/set_ai_mode.sh` : rule/llm 모드 전환
 
-## 7) KR 데이터 파이프라인
+## 7) 배포/CI (Cloud Run)
+- Cloud Run 배포 스크립트 추가
+  - `scripts/cloudrun_deploy_backend.sh`
+  - `scripts/cloudrun_deploy_mcp.sh`
+- Dockerfile 추가
+  - `backend/Dockerfile`
+  - `mcp/Dockerfile`
+- GitHub Actions 워크플로우 추가
+  - `/.github/workflows/deploy-backend.yml`
+  - `/.github/workflows/deploy-mcp.yml`
+- 가이드 문서
+  - `docs/cloud_run.md`
+
+## 8) KR 데이터 파이프라인
 ### KR 종목 동기화
 - `python -m app.sync_kr_instruments`
 - 거래일 자동 감지 실패 시 `--date YYYYMMDD` 가능
@@ -69,14 +82,14 @@
 - `python -m app.ingest_kr_daily_top --top 200 --markets KOSPI,KOSDAQ --date YYYYMMDD`
 - 최근 거래일 시총 컬럼이 비는 경우가 있어 날짜 지정 필요
 
-## 8) DART 공시
+## 9) DART 공시
 - `python -m app.ingest_dart --from YYYY-MM-DD --to YYYY-MM-DD --stock-codes 005930 --limit 20`
 - 다건 적재 시 batch upsert(500개)
 - 조회 API:
   - `/events/dart?stock_code=005930&limit=20`
   - `/events/dart/summary?stock_code=005930&limit=5`
 
-## 9) US 데이터 (무료/가벼운 구성)
+## 10) US 데이터 (무료/가벼운 구성)
 - 소스: Stooq 기본, yfinance 폴백
 - 종목 동기화: `python -m app.sync_us_instruments`
 - 일봉 적재: `python -m app.ingest_us_daily --symbol AAPL --from 2024-01-01 --to 2024-12-31`
@@ -84,13 +97,13 @@
   - `python -m app.validate_us_daily --days 30 --symbol AAPL --ref AAPL`
   - `python -m app.repair_us_daily --days 30 --limit 50`
 
-## 10) 현재 상태
+## 11) 현재 상태
 - KR: 일봉 적재/검증 OK (테스트용)
 - DART: 특정 종목 필터 적재 OK
 - US: AAPL 일봉 적재/검증 OK
 - LLM: `gpt-4.1-mini` 정상 동작
 
-## 11) 남은 이슈/다음 작업
+## 12) 남은 이슈/다음 작업
 - KR 상위 시총 Top200 적재: 시총 데이터가 비는 날짜 케이스 처리 필요
 - KR 상위 시총 Top200: 최근 날짜/지정 날짜 기준으로 시총 데이터 있는 날짜로 fallback
 - KR 상위 시총 Top200: 거래대금/지수(KOSPI200/KOSDAQ150)/티커리스트 fallback 추가

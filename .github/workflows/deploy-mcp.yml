@@ -1,0 +1,41 @@
+name: Deploy MCP (Cloud Run)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "mcp/**"
+      - "infra/**"
+      - "docs/**"
+      - "scripts/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Auth to Google Cloud (WIF)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Build and deploy
+        run: |
+          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/stock-ai-mcp
+          gcloud builds submit --tag "$IMAGE" mcp
+          gcloud run deploy stock-ai-mcp \
+            --image "$IMAGE" \
+            --region asia-northeast3 \
+            --allow-unauthenticated

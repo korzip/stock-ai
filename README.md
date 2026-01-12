@@ -1,8 +1,8 @@
-# Stock AI Monorepo
+# Stock AI 모노레포
 
 로컬 개발 스택: 백엔드 + MCP + 인프라 + 모바일 앱.
 
-## 빠른 시작
+## 빠른 시작 (로컬)
 
 1) 인프라
 ```
@@ -35,7 +35,7 @@ cd ../mobile
 flutter run
 ```
 
-## 원클릭 실행
+## 원클릭 실행 (로컬)
 ```
 ./scripts/dev_up.sh
 ```
@@ -114,4 +114,6 @@ python -m app.repair_us_daily --days 30 --limit 50
 
 ## 문서
 - `docs/runbook.md`: 실행/운영 매뉴얼
+- `docs/cloud_run.md`: Cloud Run 배포 가이드
 - `docs/us_data_plan.md`: 미국 데이터 계획
+- `docs/progress.md`: 진행 기록

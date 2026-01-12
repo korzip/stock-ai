@@ -101,6 +101,10 @@ cd /Users/hh535/private-project/trade-recommend/stock-ai
 ./scripts/dev_up.sh
 ```
 
-## 11) 주의사항
+## 11) Cloud Run 배포
+- Cloud Run 배포 절차는 `docs/cloud_run.md` 참고
+- 스테이징/프로덕션 분리 시 서비스 이름에 `-staging` 접미사 권장
+
+## 12) 주의사항
 - KR 가격 데이터는 pykrx 접근 상태에 따라 일부 종목이 빈 데이터일 수 있음
 - DART API 키는 채팅/공개 로그에 절대 노출하지 말 것
